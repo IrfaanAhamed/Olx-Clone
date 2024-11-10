@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { CiLocationOn } from "react-icons/ci";
-import { MdMyLocation, MdNotificationsNone, MdOutlineHelpOutline } from "react-icons/md";
+import {
+  MdMyLocation,
+  MdNotificationsNone,
+  MdOutlineHelpOutline
+} from "react-icons/md";
 import { RiChat3Line } from "react-icons/ri";
 import { FaCheck, FaPlus, FaRegHeart } from "react-icons/fa6";
 import { IoSearchOutline } from "react-icons/io5";
@@ -11,7 +15,11 @@ import { Command, CommandGroup, CommandList } from "@/components/ui/command";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger
+} from "@/components/ui/popover";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Link } from "react-router-dom";
 
@@ -29,8 +37,7 @@ interface ButtonItem {
 export const location: LocationItem[] = [
   { id: 1, state: "Andhra Pradesh" },
   { id: 2, state: "Arunachal Pradesh" },
-  { id: 3, state: "Assam" },
-  
+  { id: 3, state: "Assam" }
 ];
 
 export const remainingButtons: ButtonItem[] = [
@@ -59,7 +66,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <div className="w-full h-16 flex bg-slate-100 ">
+    <div className="w-full h-16 flex bg-slate-100 border border-b-4 border-white">
       {/* Left Header */}
       <div className="gap-2 basis-1/4 flex items-center relative ml-2">
         <Link to="/Olx-Clone/">
@@ -71,8 +78,8 @@ const Header: React.FC = () => {
         </Link>
 
         <Command
-          className="border sm:border-slate-950 min-w-7 h-8 sm:h-10 flex justify-center max-w-60
-          sm:rounded-sm rounded-full focus:outline focus:outline-offset-2 focus:outline-cyan-400"
+          className="border border-slate-500 sm:border-slate-950 min-w-8  h-10 sm:h-10 flex justify-center max-w-60
+          sm:rounded-sm rounded-xl focus:outline focus:outline-offset-2 focus:outline-cyan-400"
         >
           <Popover open={open} onOpenChange={(newOpen) => setOpen(newOpen)}>
             <PopoverTrigger className="flex items-center justify-center">
@@ -96,8 +103,8 @@ const Header: React.FC = () => {
                   }`}
                 />
               </div>
-              <div className="sm:hidden">
-                <CiLocationOn className="sm:text-xl text-2xl" />
+              <div className="sm:hidden ">
+                <CiLocationOn className="sm:text-xl text-3xl" />
               </div>
             </PopoverTrigger>
 
@@ -154,24 +161,24 @@ const Header: React.FC = () => {
 
       {/* Middle Header */}
       <div
-        className="w-full md:min-w-[500px] ml-3 flex
+        className="w-full md:min-w-[500px] sm:ml-3 flex
         basis-1/2 items-center"
       >
         <input
-          className="flex-1 ml-2 rounded-l-sm rounded-r-none h-10 border hidden sm:block 
-        border-black md:max-w-1/2 text-sm pl-2 focus:outline focus:outline-offset-2 
+          className="flex-1 ml-2 rounded-l-sm rounded-r-none h-10 border  
+        border-black md:max-w-1/2 max-w-full min-w-5  text-sm pl-2 focus:outline focus:outline-offset-2 
         focus:outline-cyan-400"
           placeholder="Find Cars, Mobile Phones and more..."
         />
         <div
           className="sm:w-10 sm:h-10 bg-slate-700 flex items-center
-         justify-center sm:rounded-r-sm sm:rounded-l-none  rounded-full h-8 w-8 ml-1 sm:ml-0"
+         justify-center rounded-r-sm rounded-l-none   h-10 w-8 "
         >
           <IoSearchOutline className="text-white text-xl md:text-2xl" />
         </div>
       </div>
       {/* Right Header */}
-      <div className=" basis-1/3 flex items-center justify-around flex-row-reverse sm:flex-row">
+      <div className=" basis-1/4 flex items-center justify-around ml-1 flex-row-reverse sm:flex-row">
         <Popover>
           <PopoverTrigger
             className=" h-full pl-3 text-sm flex items-center"
@@ -185,10 +192,7 @@ const Header: React.FC = () => {
             />
           </PopoverTrigger>
 
-          <PopoverContent
-            className="max-w-56"
-      
-          >
+          <PopoverContent className="max-w-56">
             <div className="flex items-center justify-between">
               <p>English</p> <FaCheck className="text-xl" />
             </div>
@@ -250,7 +254,7 @@ const Header: React.FC = () => {
           </Popover>
         </div>
         <div className="flex items-center">
-          <div className="relative font-extrabold rounded-full hover:bg-white p-3 py-4">
+          <div className="relative font-extrabold rounded-full bg-white p-1 sm:p-3 py-4">
             <span
               className=" cursor-pointer
               before:absolute before:inset-1 before:rounded-full
@@ -258,9 +262,11 @@ const Header: React.FC = () => {
             before:border-r-teal-400 before:border-b-blue-500 before:border-l-yellow-400"
             />
 
-            <div className=" flex text-sm items-center space-x-1 px-3 rounded-full">
+            <div className=" flex text-sm items-center hover:scale-100 space-x-1 px-3 rounded-full">
               <FaPlus className="" />
-              <span className="font-extrabold text-xs">SELL</span>
+              <span className="font-extrabold text-xs hidden sm:block">
+                SELL
+              </span>
             </div>
           </div>
         </div>
