@@ -166,7 +166,7 @@ const Header: React.FC = () => {
       >
         <input
           className="flex-1 ml-2 rounded-l-sm rounded-r-none h-10 border  
-        border-black md:max-w-1/2 max-w-full min-w-5  text-sm pl-2 focus:outline focus:outline-offset-2 
+        border-black md:max-w-1/2 max-w-full w-5  text-sm pl-2 focus:outline focus:outline-offset-2 
         focus:outline-cyan-400"
           placeholder="Find Cars, Mobile Phones and more..."
         />
@@ -207,14 +207,14 @@ const Header: React.FC = () => {
           <span className="w-3 rounded-full h-3 bg-cyan-300 absolute top-2 left-5"></span>
         </div>
 
-        <div className="">
+        <div className="mx-1 border rounded-full p-1 sm:border-none border-slate-300">
           <Popover>
             <PopoverTrigger className="flex items-center">
               <Avatar className="h-8 w-8">
                 <AvatarImage src="https://github.com/shadcn.png" />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
-              <IoIosArrowDown className="text-2xl" />
+              <IoIosArrowDown className="text-2xl hidden sm:block" />
             </PopoverTrigger>
             <PopoverContent className="mr-20 mt-2">
               <div className="space-y-4">
