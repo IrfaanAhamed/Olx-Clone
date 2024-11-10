@@ -1,33 +1,54 @@
 import React, { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { CiLocationOn } from "react-icons/ci";
-import { MdMyLocation } from "react-icons/md";
+import { MdMyLocation, MdNotificationsNone, MdOutlineHelpOutline } from "react-icons/md";
 import { RiChat3Line } from "react-icons/ri";
-import { FaPlus } from "react-icons/fa6";
-import { MdNotificationsNone } from "react-icons/md";
-import { FaCheck } from "react-icons/fa6";
-
+import { FaCheck, FaPlus, FaRegHeart } from "react-icons/fa6";
 import { IoSearchOutline } from "react-icons/io5";
-import { location, remainingButtons } from "./datas";
+import { LuClipboardList } from "react-icons/lu";
+import { CiViewBoard, CiSettings, CiLogout } from "react-icons/ci";
 import { Command, CommandGroup, CommandList } from "@/components/ui/command";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger
-} from "@/components/ui/popover";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Link } from "react-router-dom";
 
-function Header() {
-  const [open, setOpen] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-  const [profileOpen, setProfileOpen] = useState(false);
-  const [selectedLocation, setSelectedLocation] = useState([]);
+// Define types for location items and button items
+interface LocationItem {
+  id: number;
+  state: string;
+}
 
-  const handleLocationClick = (item) => {
+interface ButtonItem {
+  title: string;
+  icon: JSX.Element;
+}
+
+export const location: LocationItem[] = [
+  { id: 1, state: "Andhra Pradesh" },
+  { id: 2, state: "Arunachal Pradesh" },
+  { id: 3, state: "Assam" },
+  
+];
+
+export const remainingButtons: ButtonItem[] = [
+  { title: "My ADS", icon: <FaRegHeart /> },
+  { title: "Buy Business Package", icon: <LuClipboardList /> },
+  { title: "Bought Packages & Billing", icon: <CiViewBoard /> },
+  { title: "Help", icon: <MdOutlineHelpOutline /> },
+  { title: "Settings", icon: <CiSettings /> },
+  { title: "Logout", icon: <CiLogout /> }
+];
+
+const Header: React.FC = () => {
+  const [open, setOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [profileOpen, setProfileOpen] = useState<boolean>(false);
+  const [selectedLocation, setSelectedLocation] = useState<LocationItem[]>([]);
+
+  const handleLocationClick = (item: LocationItem) => {
     setSelectedLocation((prevSelected) => {
       if (!prevSelected.some((loc) => loc.state === item.state)) {
         const updatedSelected = [item, ...prevSelected].slice(0, 3);
@@ -38,8 +59,8 @@ function Header() {
   };
 
   return (
-    <div className="w-full h-16 flex  bg-slate-100 ">
-      {/* left header */}
+    <div className="w-full h-16 flex bg-slate-100 ">
+      {/* Left Header */}
       <div className="gap-2 basis-1/4 flex items-center relative ml-2">
         <Link to="/Olx-Clone/">
           <img
@@ -53,7 +74,7 @@ function Header() {
           className="border sm:border-slate-950 min-w-7 h-8 sm:h-10 flex justify-center max-w-60
           sm:rounded-sm rounded-full focus:outline focus:outline-offset-2 focus:outline-cyan-400"
         >
-          <Popover open={open} onOpenChange={setOpen}>
+          <Popover open={open} onOpenChange={(newOpen) => setOpen(newOpen)}>
             <PopoverTrigger className="flex items-center justify-center">
               <div className="hidden sm:flex items-center mx-1">
                 <IoSearchOutline
@@ -130,7 +151,8 @@ function Header() {
           </Popover>
         </Command>
       </div>
-      {/* middle header */}
+
+      {/* Middle Header */}
       <div
         className="w-full md:min-w-[500px] ml-3 flex
         basis-1/2 items-center"
@@ -148,7 +170,7 @@ function Header() {
           <IoSearchOutline className="text-white text-xl md:text-2xl" />
         </div>
       </div>
-      {/* right header */}
+      {/* Right Header */}
       <div className=" basis-1/3 flex items-center justify-around flex-row-reverse sm:flex-row">
         <Popover>
           <PopoverTrigger
@@ -165,7 +187,7 @@ function Header() {
 
           <PopoverContent
             className="max-w-56"
-            onOpenChange={(open) => setIsOpen(open)}
+      
           >
             <div className="flex items-center justify-between">
               <p>English</p> <FaCheck className="text-xl" />
@@ -245,6 +267,6 @@ function Header() {
       </div>
     </div>
   );
-}
+};
 
 export default Header;
